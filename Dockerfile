@@ -1,7 +1,7 @@
 FROM httpd:2.4
 
 ENV SERVER_ADMIN pleaseSetTheEnvironment@variable.tld
-ENV DOCUMENT_ROOT /usr/local/apache2/htdocs
+ENV DOCUMENT_ROOT /usr/local/apache2/htdocs/public
 
 # activate modules for FastCGI usage
 RUN sed -i -e "s?#LoadModule proxy_module modules/mod_proxy.so?LoadModule proxy_module modules/mod_proxy.so?g" /usr/local/apache2/conf/httpd.conf
