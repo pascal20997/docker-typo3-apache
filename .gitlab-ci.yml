@@ -2,7 +2,6 @@ image: docker:stable
 
 stages:
   - build
-  - test
   - release
 
 # When using dind, it's wise to use the overlayfs driver for
@@ -25,31 +24,6 @@ build:
   script:
     - docker build -t $CONTAINER_TEST_IMAGE .
     - docker push $CONTAINER_TEST_IMAGE
-  only:
-    - master
-
-# todo: add better tests
-test-php:
-  stage: test
-  script:
-    - docker pull $CONTAINER_TEST_IMAGE
-    - docker run $CONTAINER_TEST_IMAGE php -v
-  only:
-    - master
-
-test-composer:
-  stage: test
-  script:
-    - docker pull $CONTAINER_TEST_IMAGE
-    - docker run $CONTAINER_TEST_IMAGE composer -V
-  only:
-    - master
-
-test-imagemagick:
-  stage: test
-  script:
-    - docker pull $CONTAINER_TEST_IMAGE
-    - docker run $CONTAINER_TEST_IMAGE convert -version
   only:
     - master
 
