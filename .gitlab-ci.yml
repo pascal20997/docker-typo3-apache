@@ -50,6 +50,7 @@ push-on-dockerhub:
   before_script:
     - echo "$REGISTRY_PASSWORD" | docker login --username "$REGISTRY_USER" --password-stdin
   script:
+    - docker pull $CONTAINER_LATEST_IMAGE
     - docker tag $CONTAINER_LATEST_IMAGE $CONTAINER_DOCKERHUB
     - docker push $CONTAINER_DOCKERHUB
     
