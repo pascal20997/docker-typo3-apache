@@ -48,9 +48,10 @@ release-tagged:
 push-on-dockerhub:
   stage: release
   before_script:
-    - echo "$REGISTRY_PASSWORD" | docker login --username "$REGISTRY_USER" --password-stdin
   script:
     - docker pull $CONTAINER_LATEST_IMAGE
+    - docker logout
+    - echo "$REGISTRY_PASSWORD" | docker login --username "$REGISTRY_USER" --password-stdin
     - docker tag $CONTAINER_LATEST_IMAGE $CONTAINER_DOCKERHUB
     - docker push $CONTAINER_DOCKERHUB
     
