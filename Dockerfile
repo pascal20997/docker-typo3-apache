@@ -17,3 +17,6 @@ RUN sed -i -e "s?User daemon?User typo3?g" /usr/local/apache2/conf/httpd.conf
 
 # copy apache-conf
 COPY apache-conf /usr/local/apache2/conf/extra
+
+# add user typo3 to allow shell access
+RUN useradd -g 1 -m -s "/bin/bash" typo3
