@@ -20,3 +20,6 @@ COPY apache-conf /usr/local/apache2/conf/extra
 
 # add user typo3 to allow shell access
 RUN useradd -g 1 -m -s "/bin/bash" typo3
+
+# prepare htdocs folder
+RUN rm -Rf /usr/local/apache2/htdocs/* && chown -R typo3:www-data /usr/local/apache2/htdocs
