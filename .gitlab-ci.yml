@@ -9,6 +9,7 @@ stages:
 variables:
   DOCKER_DRIVER: overlay2
   DOCKER_REGISTRY: docker-registry.kronova.net
+  DOCKER_TLS_CERTDIR: ""
   CONTAINER_TEST_IMAGE: docker-registry.kronova.net/docker/typo3-apache:commit-$CI_COMMIT_SHA
   CONTAINER_LATEST_IMAGE: docker-registry.kronova.net/docker/typo3-apache:latest
   CONTAINER_TAGGED_IMAGE: docker-registry.kronova.net/docker/typo3-apache:$CI_COMMIT_REF_NAME
